@@ -2,10 +2,21 @@ package com.data.springjavakafkaclient.kafka;
 
 
 import com.data.springjavakafkaclient.model.Message;
-import org.springframework.context.annotation.Bean;
+import com.google.gson.Gson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
+@Service
+public class KafkaClient {
 
-public interface KafkaClient {
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage (Message message);
+    @Autowired
+    private Gson gson;
+
+    public void sendMessage(Message message) {
+        kafkaTemplate.send("topics", gson.toJson(message));
+    }
 }

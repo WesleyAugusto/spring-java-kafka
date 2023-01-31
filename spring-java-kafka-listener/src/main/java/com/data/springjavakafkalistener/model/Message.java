@@ -1,4 +1,4 @@
-package com.data.springjavakafkaclient.model;
+package com.data.springjavakafkalistener.model;
 
 
 import lombok.AllArgsConstructor;
